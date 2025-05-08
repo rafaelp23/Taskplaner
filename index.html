@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskPlanner</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>TaskPlanner Universitário</h1>
+  </header>
+  <main>
+    <section>
+      <h2>Cadastrar Nova Tarefa</h2>
+      <form id="task-form">
+        <label for="title">Título:</label>
+        <input type="text" id="title" name="title" required>
+        <label for="description">Descrição:</label>
+        <textarea id="description" name="description" required></textarea>
+        <label for="deadline">Prazo:</label>
+        <input type="date" id="deadline" name="deadline" required>
+        <label for="priority">Prioridade:</label>
+        <select id="priority" name="priority">
+          <option value="baixa">Baixa</option>
+          <option value="média">Média</option>
+          <option value="alta">Alta</option>
+        </select>
+        <button type="submit">Salvar Tarefa</button>
+      </form>
+    </section>
+    <section id="filters-section">
+      <h2>Filtros</h2>
+      <label for="filter-priority">Filtrar por Prioridade:</label>
+      <select id="filter-priority">
+        <option value="">Todas as Prioridades</option>
+        <option value="alta">Alta</option>
+        <option value="média">Média</option>
+        <option value="baixa">Baixa</option>
+      </select>
+      <br><br>
+      <label for="filter-status">Filtrar por Status:</label>
+      <select id="filter-status">
+        <option value="">Todos os Status</option>
+        <option value="pendente">Pendente</option>
+        <option value="concluída">Concluída</option>
+      </select>
+    </section>
+    <section id="tasks-section">
+      <h2>Tarefas</h2>
+      <div id="task-list"></div>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 Rafael Pereira. Todos os direitos reservados.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
