@@ -1,0 +1,48 @@
+{
+  "nome": "Monitoramento Ambiental Residencial",
+  "icone": "🏠",
+  "cor_principal": "#2E7D32",
+  "sensores": [
+    {
+      "name": "temperatura",
+      "label": "Temperatura",
+      "unit": "°C",
+      "icon": "🌡️",
+      "min": -40,
+      "max": 80,
+      "default": 23.5,
+      "step": 0.1
+    },
+    {
+      "name": "umidade",
+      "label": "Umidade",
+      "unit": "%",
+      "icon": "💧",
+      "min": 0,
+      "max": 100,
+      "default": 60,
+      "step": 0.1
+    },
+    {
+      "name": "co2",
+      "label": "CO2",
+      "unit": "PPM",
+      "icon": "🌫️",
+      "min": 0,
+      "max": 5000,
+      "default": 450,
+      "step": 1
+    },
+    {
+      "name": "luminosidade",
+      "label": "Luminosidade",
+      "unit": "lux",
+      "icon": "💡",
+      "min": 0,
+      "max": 65535,
+      "default": 350,
+      "step": 1
+    }
+  ],
+  "sensor_id": "AMB_SALA_01"
+}

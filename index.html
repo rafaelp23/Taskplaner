@@ -1,59 +1,99 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TaskPlanner</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Monitoramento Ambiental Residencial</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header>
-    <h1>TaskPlanner Universitário</h1>
-  </header>
-  <main>
-    <section>
-      <h2>Cadastrar Nova Tarefa</h2>
-      <form id="task-form">
-        <label for="title">Título:</label>
-        <input type="text" id="title" name="title" required>
-        <label for="description">Descrição:</label>
-        <textarea id="description" name="description" placeholder="Digite a Descrição" required></textarea>
-        <label for="deadline">Prazo:</label>
-        <input type="date" id="deadline" name="deadline" required>
-        <label for="priority">Prioridade:</label>
-        <select id="priority" name="priority">
-          <option value="baixa">Baixa</option>
-          <option value="média">Média</option>
-          <option value="alta">Alta</option>
-        </select>
-        <button type="submit">Salvar Tarefa</button>
-      </form>
-    </section>
-    <section id="filters-section">
-      <h2>Filtros</h2>
-      <label for="filter-priority">Filtrar por Prioridade:</label>
-      <select id="filter-priority">
-        <option value="">Todas as Prioridades</option>
-        <option value="alta">Alta</option>
-        <option value="média">Média</option>
-        <option value="baixa">Baixa</option>
-      </select>
-      <br><br>
-      <label for="filter-status">Filtrar por Status:</label>
-      <select id="filter-status">
-        <option value="">Todos os Status</option>
-        <option value="pendente">Pendente</option>
-        <option value="concluída">Concluída</option>
-      </select>
-    </section>
-    <section id="tasks-section">
-      <h2>Tarefas</h2>
-      <div id="task-list"></div>
-    </section>
-  </main>
-  <footer>
-    <p>&copy; 2025 Rafael Pereira. Todos os direitos reservados.</p>
-  </footer>
-  <script src="script.js"></script>
+    <header>
+        <h1>🏠 Monitoramento Ambiental Residencial</h1>
+        <div id="status-api" class="status offline">API: Verificando...</div>
+    </header>
+
+    <main>
+        <!-- SEÇÃO 1: FORMULÁRIO DE SIMULAÇwÃO -->
+        <section class="card">
+            <h2>📊 Simulador de Sensores</h2>
+            <form id="sensor-form" action="api/sensor-data.php" method="POST">
+                <div class="form-group">
+                    <label>ID do Sensor:</label>
+                    <input type="text" name="sensor_id" value="AMB_SALA_01" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Temperatura (°C):</label>
+                    <input type="number" name="temperatura" step="0.1" 
+                           min="-40" max="80" value="23.5" required>
+                    <small>Faixa: -40 a 80 °C</small>
+                </div>
+                <div class="form-group">
+                    <label>Umidade (%):</label>
+                    <input type="number" name="umidade" step="0.1" 
+                           min="0" max="100" value="60" required>
+                    <small>Faixa: 0 a 100 %</small>
+                </div>
+                <div class="form-group">
+                    <label>CO2 (PPM):</label>
+                    <input type="number" name="co2" step="1" 
+                           min="0" max="5000" value="450" required>
+                    <small>Faixa: 0 a 5000 PPM</small>
+                </div>
+                <div class="form-group">
+                    <label>Luminosidade (lux):</label>
+                    <input type="number" name="luminosidade" step="1" 
+                           min="0" max="65535" value="350" required>
+                    <small>Faixa: 0 a 65535 lux</small>
+                </div>
+
+                <button type="submit" class="btn-primary">📤 Enviar Leitura</button>
+                <button type="button" class="btn-secondary" onclick="gerarDadosAleatorios()">🎲 Gerar Dados Aleatórios</button>
+            </form>
+        </section>
+
+        <!-- SEÇÃO 2: MONITOR EM TEMPO REAL -->
+        <section class="card">
+            <h2>📺 Monitor em Tempo Real</h2>
+            <div class="monitor-grid">
+                <div class="monitor-card" id="temperatura-card">
+                    <div class="icon">🌡️</div>
+                    <div class="label">Temperatura</div>
+                    <div class="value" id="temperatura-valor">--</div>
+                    <div class="status" id="temperatura-status">Aguardando...</div>
+                </div>
+                <div class="monitor-card" id="umidade-card">
+                    <div class="icon">💧</div>
+                    <div class="label">Umidade</div>
+                    <div class="value" id="umidade-valor">--</div>
+                    <div class="status" id="umidade-status">Aguardando...</div>
+                </div>
+                <div class="monitor-card" id="co2-card">
+                    <div class="icon">🌫️</div>
+                    <div class="label">CO2</div>
+                    <div class="value" id="co2-valor">--</div>
+                    <div class="status" id="co2-status">Aguardando...</div>
+                </div>
+                <div class="monitor-card" id="luminosidade-card">
+                    <div class="icon">💡</div>
+                    <div class="label">Luminosidade</div>
+                    <div class="value" id="luminosidade-valor">--</div>
+                    <div class="status" id="luminosidade-status">Aguardando...</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 3: HISTÓRICO -->
+        <section class="card">
+            <h2>📋 Histórico de Leituras</h2>
+            <div class="historico-controles">
+                <button class="btn-secondary" onclick="carregarHistorico()">🔄 Atualizar</button>
+                <button class="btn-danger" onclick="limparDados()">🗑️ Limpar Dados</button>
+            </div>
+            <div id="historico-list"></div>
+        </section>
+    </main>
+
+    <script src="js/dashboard.js"></script>
 </body>
 </html>

@@ -1,0 +1,82 @@
+[
+    {
+        "sensor_id": "AMB_SALA_01",
+        "temperatura": -16.3,
+        "umidade": 97.2,
+        "co2": 1988,
+        "luminosidade": 50112,
+        "timestamp": "2025-11-08 15:20:13"
+    },
+    {
+        "sensor_id": "AMB_SALA_01",
+        "temperatura": -28.6,
+        "umidade": 12.7,
+        "co2": 720,
+        "luminosidade": 12142,
+        "timestamp": "2025-11-08 15:20:25"
+    },
+    {
+        "sensor_id": "AMB_SALA_01",
+        "temperatura": 23.5,
+        "umidade": 60,
+        "co2": 450,
+        "luminosidade": 350,
+        "timestamp": "2025-11-08 15:22:27"
+    },
+    {
+        "sensor_id": "AMB_SALA_01",
+        "temperatura": 39.7,
+        "umidade": 82.8,
+        "co2": 1176,
+        "luminosidade": 3598,
+        "timestamp": "2025-11-08 15:22:31"
+    },
+    {
+        "sensor_id": "AMB_SALA_01",
+        "temperatura": 3.2,
+        "umidade": 12,
+        "co2": 2001,
+        "luminosidade": 41186,
+        "timestamp": "2025-11-08 15:22:39"
+    },
+    {
+        "sensor_id": "AMB_SALA_01",
+        "temperatura": -38.8,
+        "umidade": 45.4,
+        "co2": 4283,
+        "luminosidade": 54892,
+        "timestamp": "2025-11-08 15:26:55"
+    },
+    {
+        "sensor_id": "AMB_SALA_01",
+        "temperatura": 23.5,
+        "umidade": 60,
+        "co2": 450,
+        "luminosidade": 350,
+        "timestamp": "2025-11-08 15:46:22"
+    },
+    {
+        "sensor_id": "AMB_SALA_01",
+        "temperatura": -20.5,
+        "umidade": 55.9,
+        "co2": 2934,
+        "luminosidade": 43293,
+        "timestamp": "2025-11-08 15:46:28"
+    },
+    {
+        "sensor_id": "AMB_SALA_01",
+        "temperatura": 14.4,
+        "umidade": 39.2,
+        "co2": 919,
+        "luminosidade": 8089,
+        "timestamp": "2025-11-08 15:46:40"
+    },
+    {
+        "sensor_id": "AMB_SALA_01",
+        "temperatura": 22.9,
+        "umidade": 81.1,
+        "co2": 4695,
+        "luminosidade": 17589,
+        "timestamp": "2025-11-08 15:46:51"
+    }
+]
