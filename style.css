@@ -1,49 +1,109 @@
-/* style.css */
+/* ========================================= */
+/* CONFIGURAÇÕES GERAIS (RESET BÁSICO)       */
+/* ========================================= */
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f8f9fa;
+  font-family: Arial, sans-serif; /* Define a fonte padrão */
+  margin: 0;                      /* Remove margens padrão do navegador */
+  padding: 0;                     /* Remove preenchimentos padrão */
+  background-color: #f8f9fa;      /* Cor de fundo cinza bem claro */
 }
 
+/* ========================================= */
+/* CABEÇALHO (TOPO DA PÁGINA)                */
+/* ========================================= */
 header {
-  background-color: #0a2e18;
-  color: rgb(186, 185, 185);
-  text-align: center;
-  padding: 1rem;
+  background-color: #0a2e18;      /* Verde escuro */
+  color: rgb(186, 185, 185);      /* Cor do texto cinza claro */
+  text-align: center;             /* Centraliza o texto do título */
+  padding: 1rem;                  /* Espaçamento interno */
 }
 
+/* ========================================= */
+/* CONTEÚDO PRINCIPAL (ONDE FICA O FORM)     */
+/* ========================================= */
 main {
-  background-color: #dee4e0;
-  padding: 1rem;
+  background-color: #dee4e0;      /* Fundo esverdeado claro */
+  padding: 1rem;                  /* Espaçamento interno para não colar na borda */
+  
+  /* --- ALINHAMENTO CENTRAL (FLEXBOX) --- */
+  display: flex;                  /* Ativa o modo flexível */
+  flex-direction: column;         /* Organiza os itens um embaixo do outro */
+  align-items: center;            /* Centraliza os itens (seções) horizontalmente */
+  min-height: 80vh;               /* Garante altura mínima para não ficar vazio */
 }
 
+/* ========================================= */
+/* SEÇÕES (CADA BLOCO DE CONTEÚDO)           */
+/* ========================================= */
+section {
+  width: 100%;                    /* Ocupa toda a largura disponível no celular */
+  max-width: 600px;               /* No PC, trava em 600px para não esticar demais */
+  margin-bottom: 2rem;            /* Espaço abaixo de cada seção */
+}
+
+h2 {
+  text-align: center;             /* Centraliza os títulos das seções */
+  color: #0a2e18;                 /* Verde escuro para combinar com o header */
+}
+
+/* ========================================= */
+/* FORMULÁRIO (CADASTRO DE TAREFAS)          */
+/* ========================================= */
 form {
-  display: grid;
-  gap: 1rem;
-  max-width: 400px;
+  background-color: #fff;         /* Fundo branco para destacar o formulário */
+  padding: 1.5rem;                /* Espaço interno (respiro) */
+  border-radius: 8px;             /* Bordas arredondadas */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Sombra suave para dar destaque */
+  
+  /* --- GRID DO FORMULÁRIO --- */
+  display: grid;                  /* Organiza label e input como grade */
+  gap: 1rem;                      /* Espaço entre cada campo (input) */
+  
+  /* --- CENTRALIZAÇÃO DO FORM --- */
+  width: 100%;                    /* Tenta usar 100% do espaço da section */
+  max-width: 400px;               /* Mas trava em 400px para ficar bonito */
+  margin: 0 auto;                 /* Centraliza o formulário dentro da section */
+  box-sizing: border-box;         /* Garante que o padding não aumente a largura total */
 }
 
 label {
-  font-weight: bold;
+  font-weight: bold;              /* Deixa o texto do rótulo em negrito */
+  color: #333;                    /* Cor do texto mais escura */
 }
 
+input, select, textarea {
+  width: 100%;                    /* Campo ocupa 100% da largura do form */
+  padding: 10px;                  /* Área clicável maior (bom para celular) */
+  border: 1px solid #ccc;         /* Borda cinza suave */
+  border-radius: 4px;             /* Cantos levemente arredondados */
+  box-sizing: border-box;         /* Padding não estoura a largura */
+}
+
+/* ========================================= */
+/* BOTÕES (GERAL)                            */
+/* ========================================= */
 button {
-  background-color: #134b23;
-  color: white;
-  border: none;
-  padding: 0.5rem;
-  cursor: pointer;
+  background-color: #134b23;      /* Fundo verde */
+  color: white;                   /* Texto branco */
+  border: none;                   /* Sem borda */
+  padding: 0.8rem;                /* Botão mais alto (melhor para toque) */
+  border-radius: 4px;             /* Cantos arredondados */
+  cursor: pointer;                /* Mãozinha ao passar o mouse */
+  font-size: 1rem;                /* Tamanho da letra legível */
+  transition: background 0.3s;    /* Animação suave na cor ao passar o mouse */
 }
 
 button:hover {
-  background-color: #060606;
+  background-color: #060606;      /* Fica preto ao passar o mouse */
 }
 
+/* ========================================= */
+/* LISTA DE TAREFAS (CARDS)                  */
+/* ========================================= */
 #task-list {
-  display: grid;
-  gap: 1rem;
-  margin-top: 1rem;
+  display: grid;                  /* Grade para as tarefas */
+  gap: 1rem;                      /* Espaço entre os cartões de tarefa */
+  width: 100%;                    /* Garante que use a largura da section */
 }
 
 .task-item {
@@ -52,58 +112,64 @@ button:hover {
   border-radius: 5px;
   background-color: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  
+  /* Alinhamento interno do card */
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .task-item h3 {
   margin: 0;
+  color: #0a2e18;
 }
 
-/* Botão para excluir tarefas */
+/* Botão de Excluir (Vermelho) */
 .task-item .delete-btn {
   background-color: #dc3545;
-  color: white;
-  border: none;
-  padding: 0.5rem;
-  cursor: pointer;
+  margin-top: 10px;               /* Separa um pouco do texto acima */
 }
-
 .task-item .delete-btn:hover {
   background-color: #bd2130;
 }
 
-/* Estilos para tarefas concluídas */
+/* ========================================= */
+/* ESTADOS DAS TAREFAS (CORES E BORDAS)      */
+/* ========================================= */
 .task-item.completed {
-  background-color: #16291b; /* Verde claro */
-  border: 1px solid #145a24;
-  color: #121d15;
+  background-color: #d4edda;      /* Verde bem claro */
+  border-color: #c3e6cb;
+  opacity: 0.8;                   /* Levemente transparente */
 }
-
 .task-item.completed h3 {
-  text-decoration: line-through; /* Risco no título */
+  text-decoration: line-through;  /* Risco no texto */
 }
 
-/* Estilos para diferenciar as tarefas por prioridade */
 .task-item.alta {
-  border-left: 4px solid red;
-  background-color: #ffe5e5;
+  border-left: 5px solid #dc3545; /* Tarja vermelha na esquerda */
 }
-
 .task-item.média {
-  border-left: 4px solid orange;
-  background-color: #fff4e5;
+  border-left: 5px solid #ffc107; /* Tarja amarela/laranja */
+}
+.task-item.baixa {
+  border-left: 5px solid #28a745; /* Tarja verde */
 }
 
-.task-item.baixa {
-  border-left: 4px solid green;
-  background-color: #e5ffe5;
+/* ========================================= */
+/* RODAPÉ E FILTROS                          */
+/* ========================================= */
+#filters-section {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;             /* Centraliza os selects de filtro */
 }
 
 footer {
-  font-size: 12px;
-  justify-content: center;
+  background-color: #0a2e18;      /* Mesmo verde do header */
+  color: white;
   text-align: center;
-}
-
-#filter-status {
-  font-size: 10px;
+  padding: 1rem;
+  font-size: 12px;
+  margin-top: auto;               /* Empurra o rodapé para o final da página */
 }
